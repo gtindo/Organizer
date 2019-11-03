@@ -36,29 +36,27 @@ func InitArgs() {
 		Example : -method type
 		`)
 
-	flag.StringVar(&IgnoresFiles, "-ignore-file", "",
-		`
-		Ignores some files while organising directories
+	flag.StringVar(&IgnoresFiles, "ef", "",
+		`Exclude some files while organising directories
 		Example for one file : --ignore-file file.txt
 		Example for mulitple files : --ignore-file "file1.txt, file2.txt, file3.txt"
 	`)
 
-	flag.StringVar(&IgnoresExt, "-ignore-ext", "",
-		`
-		Ignores files with given extensions
+	flag.StringVar(&IgnoresExt, "ex", "",
+		`Excludes files with given extensions
 		Example for one extension : --ignore-ext txt
 		Example for mulitple extensions : --ignore-file "mp3, txt, json"
 	`)
 
 	flag.StringVar(&Archive, "archive", "zip",
-		`
+		`(Not working yet)
 		Archive created folders with specified method
 		Suported methods are zip and tar
 		Example : -archive zip
 	`)
 
 	flag.StringVar(&Compress, "compress", "gzip",
-		`
+		`(Not working yet)
 		Compress created folders with specified algorithm
 		Suported algorithms are : bzip2, flate, gzip, lzw, zlib 
 		Example : -archive gzip

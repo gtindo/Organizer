@@ -8,3 +8,5 @@ const FLATE = "flate"
 const GZIP = "gzip"
 const LZW = "lzw"
 const ZLIB = "zlib"
+
+// for future releases

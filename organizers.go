@@ -1,7 +1,8 @@
 package main
 
 import (
-	"os"
+	"fmt"
+	"io/ioutil"
 	"strings"
 )
 
@@ -12,22 +13,37 @@ const DATE_M = "date"
 const EXTENSION_M = "ext"
 const LOOKING_SAME = "same" // For future release
 
-func OrganizeDir(filesInfos []os.FileInfo, ignore []string, lang string, method string) map[string][]string {
+func OrganizeDir(
+	dirPath string,
+	ignoreFiles []string,
+	ignoresExt []string,
+	lang string,
+	method string) map[string][]string {
+
+	filesInfos, err := ioutil.ReadDir(dirPath)
+	if err != nil {
+		fmt.Println("Error while reading ", dirPath)
+		return nil
+	}
+
 	var ext string
 	var fileType FileType
 	var ftName string
 	var uName string
 	var firstL string
 	var dateStr string
-	var isIgnore bool
+	var isIgnoreF bool
+	var isIgnoreE bool
 
 	organizer := make(map[string][]string)
 
 	for _, info := range filesInfos {
-		isIgnore = Contains(info.Name(), ignore)
+		ext = GetFileExtension(info.Name())
+		isIgnoreF = Contains(info.Name(), ignoreFiles)
+		isIgnoreE = Contains(ext, ignoresExt)
 
-		if !info.IsDir() && !isIgnore {
-			ext = GetFileExtension(info.Name())
+		if !info.IsDir() && !isIgnoreF && !isIgnoreE {
+
 			fileType = GetFileType(ext)
 			ftName = fileType.val(lang)
 

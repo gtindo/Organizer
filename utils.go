@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -9,7 +10,7 @@ import (
 )
 
 const OS_WINDOWS = "windows"
-const BYTE_PERMS = 664
+const BYTE_PERMS = 0775
 
 // Return extension of a file given his name as parameter
 func GetFileExtension(fileName string) string {
@@ -34,7 +35,7 @@ func Contains(val string, tab []string) bool {
 }
 
 func mv(filePath, destinationPath string) error {
-	oSys := strings.Split(runtime.GOARCH, "/")[0]
+	oSys := strings.Split(runtime.GOOS, "/")[0]
 	cmd := new(exec.Cmd)
 
 	if oSys == OS_WINDOWS {
@@ -42,6 +43,11 @@ func mv(filePath, destinationPath string) error {
 	} else {
 		cmd = exec.Command("mv", filePath, destinationPath)
 	}
+
+	var out bytes.Buffer
+	var stderr bytes.Buffer
+	cmd.Stdout = &out    // standard output
+	cmd.Stderr = &stderr // errors output
 
 	err := cmd.Run()
 
