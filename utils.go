@@ -17,7 +17,7 @@ func GetFileExtension(fileName string) string {
 	n := len(tabExt)
 	ext := tabExt[n-1]
 
-	return ext
+	return strings.ToLower(ext)
 }
 
 // Check if a table contains a given string

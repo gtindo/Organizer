@@ -1,5 +1,7 @@
 package main
 
+var LANG = []string{"en", "fr", "es"}
+
 type FileType struct {
 	en, fr, es string
 }
