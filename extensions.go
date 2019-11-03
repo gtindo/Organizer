@@ -43,7 +43,7 @@ var PUBLISHING_EXT = []string{
 
 var DOCUMENTS_EXT = []string{
 	"0", "1st", "600", "602", "abw", "acl", "afp", "ami", "amigaguide", "ans", "asc", "aww", "ccf", "csv", "cwk", "dbk", "dita", "doc", "docm", "docx", "dot",
-	"dotx", "dwd", "egt", "epub", "ezw", "fdx", "ftm", "ftx", "gdoc", "hwp", "hwpml", "log", "lwp", "mbp", "md", "me", "mcw", "mobi", "nb", "nb",
+	"dotx", "dwd", "egt", "epub", "ezw", "fdx", "ftm", "ftx", "gdoc", "hwp", "hwpml", "lwp", "mbp", "md", "me", "mcw", "mobi", "nb", "nb",
 	"nbp", "neis", "odm	", "odoc", "odt", "osheet", "ott", "omm", "pages", "pap", "pdax", "pdf", "quox", "radix-64", "rtf", "rpt", "sdw", "se", "stw", "sxw",
 	"tex", "info", "troff", "txt", "uof", "uoml", "via", "wpd", "wps", "wpt", "wrd", "wrf", "wri", "xhtml", "xml", "xps",
 }

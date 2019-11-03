@@ -6,10 +6,11 @@ import (
 )
 
 // List of organizers methods
-const ALPHABETICAL_M = "alphabetical" // -
-const TYPE_M = "type"                 // -
+const ALPHABETICAL_M = "alphabetical"
+const TYPE_M = "type"
 const DATE_M = "date method"
-const LOOKING_SAME = "looking same"
+const EXTENSION_M = "extension method"
+const LOOKING_SAME = "looking same" // For future release
 
 func OrganizeDir(filesInfos []os.FileInfo, ignore []string, lang string, method string) map[string][]string {
 	var ext string
@@ -40,6 +41,9 @@ func OrganizeDir(filesInfos []os.FileInfo, ignore []string, lang string, method 
 			case DATE_M:
 				dateStr = strings.Split(info.ModTime().String(), " ")[0]
 				organizer[dateStr] = append(organizer[dateStr], info.Name())
+
+			case EXTENSION_M:
+				organizer[ext] = append(organizer[ext], info.Name())
 
 			default: //TYPE_M method
 				organizer[ftName] = append(organizer[ftName], info.Name())

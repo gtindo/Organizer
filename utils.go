@@ -1,8 +1,15 @@
 package main
 
 import (
+	"os"
+	"os/exec"
+	"path/filepath"
+	"runtime"
 	"strings"
 )
+
+const OS_WINDOWS = "windows"
+const BYTE_PERMS = 664
 
 // Return extension of a file given his name as parameter
 func GetFileExtension(fileName string) string {
@@ -24,6 +31,52 @@ func Contains(val string, tab []string) bool {
 	}
 
 	return check
+}
+
+func mv(filePath, destinationPath string) error {
+	oSys := strings.Split(runtime.GOARCH, "/")[0]
+	cmd := new(exec.Cmd)
+
+	if oSys == OS_WINDOWS {
+		cmd = exec.Command("move", filePath, destinationPath)
+	} else {
+		cmd = exec.Command("mv", filePath, destinationPath)
+	}
+
+	err := cmd.Run()
+
+	return err
+}
+
+func MoveFiles(basePath string, organiser map[string][]string) error {
+	var err error
+	var workDir string
+	var destPath string
+	var currentPath string
+
+	for dir, fileNames := range organiser {
+
+		workDir = filepath.Join(basePath, dir)
+
+		if _, err = os.Stat(workDir); os.IsNotExist(err) {
+			err = os.Mkdir(workDir, BYTE_PERMS)
+			if err != nil {
+				return err
+			}
+		}
+
+		for _, fileName := range fileNames {
+			currentPath = filepath.Join(basePath, fileName)
+			destPath = filepath.Join(workDir, fileName)
+			err = mv(currentPath, destPath)
+
+			if err != nil {
+				return err
+			}
+		}
+	}
+
+	return nil
 }
 
 // Return file type given his extension

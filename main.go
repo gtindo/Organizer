@@ -2,20 +2,12 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 )
 
 func main() {
-	fmt.Println("========== Organizer ==========")
-	infos, err := ioutil.ReadDir("./folder_test")
-	fmt.Println(infos)
-	fmt.Println(err)
+	InitArgs()
 
-	organise := make(map[string][]string)
-
-	organise = OrganizeDir(infos, []string{}, "en", DATE_M)
-
-	fmt.Println(organise)
+	fmt.Println(Dirs)
 
 }
 
@@ -24,6 +16,8 @@ func main() {
 // archives, fonts,
 
 // organize folder by alphabetical order
+
+// Organize by extension
 
 // By name looking same
 
