@@ -87,7 +87,6 @@ func MoveFiles(basePath string, organiser map[string][]string) error {
 
 // Return file type given his extension
 func GetFileType(ext string) FileType {
-
 	extensions := map[FileType][]string{
 		SOURCES_CODE:     SOURCE_CODE_EXT,
 		SPREADSHEETS:     SPREADSHEETS_EXT,
