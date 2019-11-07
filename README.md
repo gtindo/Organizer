@@ -11,9 +11,30 @@ It organize by :
 
 ## How to install
 
-### Get a release for your operating system
+### Get a package release for your operating system
+
+* Go to releas page : https://github.com/gtindo/Organizer/releases
+* Download appropriate file for your system
+* Extract file and add binary to your system path
+* Check installation  with  :
+```shell
+org -help
+```
 
 ### Clone repository and build
+
+* Make sure you have golang environment install in your system (https://golang.org/doc/install)
+
+* Clone repository
+````shell
+git clone https://github.com/gtindo/Organizer
+````
+
+* Build project
+````
+cd Organizer
+go build -o org
+````
 
 ## How to use
 
@@ -39,7 +60,7 @@ Organize folder with alphabetical order
 org -dirs <dir path> -method alph
 ````
 
-Organise dirirectory by extensions
+Organize dirirectory by extensions
 ````shell
 org -dirs <dir path> -method ext
 ````
