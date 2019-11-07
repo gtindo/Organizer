@@ -38,14 +38,14 @@ func InitArgs() {
 
 	flag.StringVar(&IgnoresFiles, "ef", "",
 		`Exclude some files while organising directories
-		Example for one file : --ignore-file file.txt
-		Example for mulitple files : --ignore-file "file1.txt, file2.txt, file3.txt"
+		Example for one file : -ef file.txt
+		Example for mulitple files : -ef "file1.txt, file2.txt, file3.txt"
 	`)
 
 	flag.StringVar(&IgnoresExt, "ex", "",
 		`Excludes files with given extensions
-		Example for one extension : --ignore-ext txt
-		Example for mulitple extensions : --ignore-file "mp3, txt, json"
+		Example for one extension : -ex txt
+		Example for mulitple extensions : -ex "mp3, txt, json"
 	`)
 
 	flag.StringVar(&Archive, "archive", "zip",

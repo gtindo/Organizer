@@ -87,92 +87,36 @@ func MoveFiles(basePath string, organiser map[string][]string) error {
 
 // Return file type given his extension
 func GetFileType(ext string) FileType {
-	if Contains(ext, SOURCE_CODE_EXT) {
-		return SOURCES_CODE
+
+	extensions := map[FileType][]string{
+		SOURCES_CODE:     SOURCE_CODE_EXT,
+		SPREADSHEETS:     SPREADSHEETS_EXT,
+		VIDEOS:           VIDEOS_EXT,
+		PUBLISHING:       PUBLISHING_EXT,
+		DOCUMENTS:        DOCUMENTS_EXT,
+		PRESENTATIONS:    PRESENTATION_EXT,
+		MEDIA_ARCHIVES:   MEDIA_ARCHIVES_EXT,
+		AUDIO:            AUDIO_EXT,
+		ARCHIVES:         ARCHIVES_EXT,
+		PICTURES:         PICTURES_EXT,
+		VECTOR_GRAPHICS:  VECTOR_GRAPHICS_EXT,
+		_3D_GRAPHICS:     _3_D_GRAPHICS_EXT,
+		SHORTCUTS:        SHORTCUTS_EXT,
+		EXECUTABLES:      EXECUTABLE_FILES_EXT,
+		CAD:              COMPUTER_AID_DESIGN_EXT,
+		EDA:              ELECTRONIC_DESIGN_AUTOMATION_EXT,
+		DATABASES:        DATABASE_EXT,
+		FINANCIAL_DATAS:  FINANCIAL_DATA_EXT,
+		FONTS:            FONTS_EXT,
+		PLAYLIST:         PLAYLIST_EXT,
+		VIRTUAL_MACHINES: VIRTUAL_MACHINES_EXT,
+		WEB_PAGES:        WEB_PAGES_EXT,
 	}
 
-	if Contains(ext, SPREADSHEETS_EXT) {
-		return SPREADSHEETS
-	}
-
-	if Contains(ext, VIDEOS_EXT) {
-		return VIDEOS
-	}
-
-	if Contains(ext, PUBLISHING_EXT) {
-		return PUBLISHING
-	}
-
-	if Contains(ext, DOCUMENTS_EXT) {
-		return DOCUMENTS
-	}
-
-	if Contains(ext, PRESENTATION_EXT) {
-		return PRESENTATIONS
-	}
-
-	if Contains(ext, AUDIO_EXT) {
-		return AUDIO
-	}
-
-	if Contains(ext, ARCHIVES_EXT) {
-		return ARCHIVES
-	}
-
-	if Contains(ext, MEDIA_ARCHIVES_EXT) {
-		return MEDIA_ARCHIVES
-	}
-
-	if Contains(ext, PICTURES_EXT) {
-		return PICTURES
-	}
-
-	if Contains(ext, VECTOR_GRAPHICS_EXT) {
-		return VECTOR_GRAPHICS
-	}
-
-	if Contains(ext, _3_D_GRAPHICS_EXT) {
-		return _3D_GRAPHICS
-	}
-
-	if Contains(ext, SHORTCUTS_EXT) {
-		return SHORTCUTS
-	}
-
-	if Contains(ext, EXECUTABLE_FILES_EXT) {
-		return EXECUTABLES
-	}
-
-	if Contains(ext, COMPUTER_AID_DESIGN_EXT) {
-		return CAD
-	}
-
-	if Contains(ext, ELECTRONIC_DESIGN_AUTOMATION_EXT) {
-		return EDA
-	}
-
-	if Contains(ext, DATABASE_EXT) {
-		return DATABASES
-	}
-
-	if Contains(ext, FINANCIAL_DATA_EXT) {
-		return FINANCIAL_DATAS
-	}
-
-	if Contains(ext, FONTS_EXT) {
-		return FONTS
-	}
-
-	if Contains(ext, PLAYLIST_EXT) {
-		return PLAYLIST
-	}
-
-	if Contains(ext, VIRTUAL_MACHINES_EXT) {
-		return VIRTUAL_MACHINES
-	}
-
-	if Contains(ext, WEB_PAGES_EXT) {
-		return WEB_PAGES
+	for fileType, extList := range extensions {
+		if Contains(ext, extList) {
+			return fileType
+		}
 	}
 
 	return OTHERS
