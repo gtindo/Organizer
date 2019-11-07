@@ -13,7 +13,7 @@ It organize by :
 
 ### Get a package release for your operating system
 
-* Go to releas page : https://github.com/gtindo/Organizer/releases
+* Go to release page : https://github.com/gtindo/Organizer/releases
 * Download appropriate file for your system
 * Extract file and add binary to your system path
 * Check installation  with  :
