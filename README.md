@@ -47,7 +47,7 @@ Organize directory by type (audio, video,...)
 ````shell
 org -dirs <dir relative or absolute path> 
 or
-org -dirs <dir relative or absolute path> -method=type
+org -dirs <dir relative or absolute path> -method type
 ````
 
 Organize multiple folders simulaneously
