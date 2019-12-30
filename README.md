@@ -86,3 +86,6 @@ org -dirs <dir path> -lang fr
 org -dirs <dir path> -lang en
 org -dirs <dir path> -lang es
 ````
+
+## Author
+G_T_Y
